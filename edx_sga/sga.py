@@ -16,7 +16,6 @@ from django.core.files.storage import default_storage  # lint-amnesty, pylint: d
 from django.template import Context, Template  # lint-amnesty, pylint: disable=import-error
 from django.utils.encoding import force_text  # pylint: disable=import-error
 from django.utils.timezone import now as django_now  # pylint: disable=import-error
-from django.utils.translation import ugettext_lazy as _  # pylint: disable=import-error
 from safe_lxml import etree  # pylint: disable=import-error
 from student.models import user_by_anonymous_id  # lint-amnesty, pylint: disable=import-error
 from submissions import api as submissions_api  # lint-amnesty, pylint: disable=import-error
@@ -50,6 +49,15 @@ from edx_sga.utils import (
 )
 
 log = logging.getLogger(__name__)
+
+
+def _(s):
+    """
+    No-op ugettext-like function.
+    :param s:
+    :return:
+    """
+    return s
 
 
 def reify(meth):
